@@ -1,4 +1,3 @@
-// Import all partials
 @require './_*.styl'
 
 
@@ -10,20 +9,6 @@ header.top
     display flex
     justify-content: center;
 
-    // This is a bunch of goofy CSS to make the logo look decent
-    .ofThe
-      display flex
-      font-size 3rem
-      color orange
-      justify-content: center;
-      align-items: center;
-      background url('images/anchor.svg') center no-repeat;
-      background-size cover
-      padding 0 1rem
-      .of
-        padding-right 2rem
-        position relative
-        right -0.5rem
   h3
     margin 0
     font-size 2rem
@@ -53,14 +38,13 @@ header.top
 
 .catch-of-the-day
   display flex
+  justify-content space-between
   height 90vh
   max-width:1500px
   margin 0 auto
   margin-top 5vh
-  perspective: 1000px;
-  transform-style preserve-3d
   & > *
-    flex 1 4 auto
+    //flex 1 4 auto
     padding 2rem
     border 1rem double lighten(black,10%)
     position relative
@@ -69,18 +53,39 @@ header.top
     box-shadow 0 5px 5px rgba(0,0,0,0.1)
     overflow scroll
     &:first-child
-      flex-shrink 1 // take 4x the extra room
+      //width 50%
+      //flex-shrink 1 // take 4x the extra room
       flex-basis 50%
-      transform translateX(50%) rotateY(6deg) translateX(-50%)
     &:nth-child(2)
-      transform translateX(-50%) rotateY(-14deg) translateX(50%)
       border-left 0
       border-right 0
       min-width 300px
     &:last-child
-      flex-shrink 1 // take 4x the extra room
+      //flex 1
+      //flex-shrink 1 // take 4x the extra room
       flex-basis 50%
-      transform translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px)
+  .order-wrap
+    display none
+    &.visible
+      display block
+  .inventory
+    visibility hidden
+    &.visible
+      visibility visible
+
+
+.cartbtn
+  background url('images/cart.svg') center no-repeat;
+  padding 30px
+  margin-right 10px
+  &.clicked
+    background-color grey
+
+.accountbtn
+  background url('images/profile.svg') center no-repeat;
+  padding 30px
+  &.clicked
+    background-color grey
 
 // Folding Transforms
 // Take off folding when not checked
@@ -159,7 +164,7 @@ ul.order
   display flex
   flex-wrap wrap
   input, textarea, select
-    width 33.33%
+    width 50%
     padding 10px
     line-height 1
     font-size 1.2rem
@@ -190,11 +195,11 @@ ul.order
   transform translateZ(0);
 
 .menu-fish
-  border-bottom 2px solid black
-  border-top 1px solid black
+  margin 20px
+  width: 80%
+  border 1px solid black
   padding-bottom 2rem
   padding-top 2rem
-  margin-bottom 5px
   clear both
   overflow hidden
   p
@@ -235,17 +240,6 @@ button, input[type=submit]
       cursor not-allowed
     &:after
       display none
-  &:after
-    content ''
-    z-index -1
-    display block
-    background black
-    position absolute
-    width 100%
-    height 0
-    left 0
-    top 0
-    transition all 0.2s
   &:hover, &:focus
     color white
     outline 0

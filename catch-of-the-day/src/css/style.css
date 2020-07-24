@@ -267,24 +267,6 @@ header.top h1 {
   -webkit-box-pack: center;
           justify-content: center;
 }
-header.top h1 .ofThe {
-  display: -webkit-box;
-  display: flex;
-  font-size: 3rem;
-  color: #f5a623;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
-  background: url("images/anchor.svg") center no-repeat;
-  background-size: cover;
-  padding: 0 1rem;
-}
-header.top h1 .ofThe .of {
-  padding-right: 2rem;
-  position: relative;
-  right: -0.5rem;
-}
 header.top h3 {
   margin: 0;
   font-size: 2rem;
@@ -318,18 +300,14 @@ header.top h3:after {
 .catch-of-the-day {
   display: -webkit-box;
   display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
   height: 90vh;
   max-width: 1500px;
   margin: 0 auto;
   margin-top: 5vh;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
 }
 .catch-of-the-day > * {
-  -webkit-box-flex: 1;
-          flex: 1 4 auto;
   padding: 2rem;
   border: 1rem double #1a1a1a;
   position: relative;
@@ -340,23 +318,42 @@ header.top h3:after {
   overflow: scroll;
 }
 .catch-of-the-day > *:first-child {
-  flex-shrink: 1;
   flex-basis: 50%;
-  -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
-          transform: translateX(50%) rotateY(6deg) translateX(-50%);
 }
 .catch-of-the-day > *:nth-child(2) {
-  -webkit-transform: translateX(-50%) rotateY(-14deg) translateX(50%);
-          transform: translateX(-50%) rotateY(-14deg) translateX(50%);
   border-left: 0;
   border-right: 0;
   min-width: 300px;
 }
 .catch-of-the-day > *:last-child {
-  flex-shrink: 1;
   flex-basis: 50%;
-  -webkit-transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
-          transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
+}
+.catch-of-the-day .order-wrap {
+  display: none;
+}
+.catch-of-the-day .order-wrap.visible {
+  display: block;
+}
+.catch-of-the-day .inventory {
+  visibility: hidden;
+}
+.catch-of-the-day .inventory.visible {
+  visibility: visible;
+}
+.cartbtn {
+  background: url("images/cart.svg") center no-repeat;
+  padding: 30px;
+  margin-right: 10px;
+}
+.cartbtn.clicked {
+  background-color: #808080;
+}
+.accountbtn {
+  background: url("images/profile.svg") center no-repeat;
+  padding: 30px;
+}
+.accountbtn.clicked {
+  background-color: #808080;
 }
 input#fold:not(:checked) ~ #main .catch-of-the-day > * {
   -webkit-transform: none;
@@ -444,7 +441,7 @@ ul.order li span.count span {
 .fish-edit input,
 .fish-edit textarea,
 .fish-edit select {
-  width: 33.33%;
+  width: 50%;
   padding: 10px;
   line-height: 1;
   font-size: 1.2rem;
@@ -482,11 +479,11 @@ ul.order li span.count span {
           transform: translateZ(0);
 }
 .menu-fish {
-  border-bottom: 2px solid #000;
-  border-top: 1px solid #000;
+  margin: 20px;
+  width: 80%;
+  border: 1px solid #000;
   padding-bottom: 2rem;
   padding-top: 2rem;
-  margin-bottom: 5px;
   clear: both;
   overflow: hidden;
 }
@@ -542,20 +539,6 @@ input[type=submit][disabled]:hover {
 button[disabled]:after,
 input[type=submit][disabled]:after {
   display: none;
-}
-button:after,
-input[type=submit]:after {
-  content: '';
-  z-index: -1;
-  display: block;
-  background: #000;
-  position: absolute;
-  width: 100%;
-  height: 0;
-  left: 0;
-  top: 0;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
 }
 button:hover,
 input[type=submit]:hover,

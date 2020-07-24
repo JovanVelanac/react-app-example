@@ -3,7 +3,6 @@ import React from "react";
 class AddFishForm extends React.Component {
   nameRef = React.createRef();
   priceRef = React.createRef();
-  statusRef = React.createRef();
   descRef = React.createRef();
   imageRef = React.createRef();
 
@@ -15,7 +14,6 @@ class AddFishForm extends React.Component {
     const fish = {
       name: this.nameRef.current.value,
       price: parseFloat(this.priceRef.current.value),
-      status: this.statusRef.current.value,
       desc: this.descRef.current.value,
       image: this.imageRef.current.value,
     };
@@ -38,18 +36,14 @@ class AddFishForm extends React.Component {
           placeholder="Price"
           ref={this.priceRef}
         />
-        <select name="status" ref={this.statusRef}>
-          <option value="available">Fresh!</option>
-          <option value="unavailable">Sold Out!</option>
-        </select>
-        <textarea name="desc" placeholder="Desc" ref={this.descRef}></textarea>
+        <textarea name="desc" placeholder="Link" ref={this.descRef}></textarea>
         <input
           name="image"
           type="text"
           placeholder="Image"
           ref={this.imageRef}
         />
-        <button type="submit">+ Add Fish</button>
+        <button type="submit">Add Game</button>
       </form>
     );
   }

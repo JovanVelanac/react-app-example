@@ -5,11 +5,14 @@ import Order from "./Order";
 import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
 import base from "../base";
+import _ from "lodash"
 
 class App extends React.Component {
   state = {
     fishes: {},
     order: {},
+    cartVisibility: false,
+    accountVisibility: false,
   };
 
   componentDidMount() {
@@ -41,6 +44,18 @@ class App extends React.Component {
     base.removeBinding(this.ref);
   }
 
+  updateCartView = () => {
+    this.setState({
+      cartVisibility: !this.state.cartVisibility
+    });
+  }
+
+  updateAccountView = () => {
+    this.setState({
+      accountVisibility: !this.state.accountVisibility
+    });
+  }
+
   addFish = (fish) => {
     // console.log(fish);
     // 1. take a copy of the existing state
@@ -68,6 +83,8 @@ class App extends React.Component {
       fishes,
     });
   };
+
+
 
   deleteFish = (key) => {
     // 1. take a copy of state
@@ -101,12 +118,14 @@ class App extends React.Component {
     // 3. call setState to update our state object with the order
     this.setState({ order });
   };
-
+  
   render() {
     return (
-      <div className="catch-of-the-day">
+      <div className={"catch-of-the-day " + this.state.layout}>
         <div className="menu">
           <Header tagline="Fresh Seafood Market" />
+          <button onClick={this.updateCartView} className={this.state.cartVisibility ? "cartbtn clicked" : "cartbtn"}></button>
+          <button onClick={this.updateAccountView} className={this.state.accountVisibility ? "accountbtn clicked" : "accountbtn"}></button>
           <ul className="fishes">
             {Object.keys(this.state.fishes).map((key) => (
               <Fish
@@ -122,6 +141,7 @@ class App extends React.Component {
           fishes={this.state.fishes}
           order={this.state.order}
           removeFromOrder={this.removeFromOrder}
+          cartVisibility={this.state.cartVisibility}
         />
         <Inventory
           addFish={this.addFish}
@@ -130,6 +150,7 @@ class App extends React.Component {
           loadSampleFishes={this.loadSampleFishes}
           fish={this.state.fishes}
           storeId={this.props.match.params.storeId}
+          accountVisibility={this.state.accountVisibility}
         />
       </div>
     );

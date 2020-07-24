@@ -29,14 +29,6 @@ class EditFishForm extends React.Component {
           onChange={this.handleChange}
           value={this.props.fish.price}
         />
-        <select
-          name="status"
-          onChange={this.handleChange}
-          value={this.props.fish.status}
-        >
-          <option value="available">Fresh!</option>
-          <option value="unavailable">Sold Out!</option>
-        </select>
         <textarea
           name="desc"
           onChange={this.handleChange}
@@ -50,7 +42,7 @@ class EditFishForm extends React.Component {
         />
 
         <button onClick={() => this.props.deleteFish(this.props.index)}>
-          Remove Fish
+          Remove Game
         </button>
       </div>
     );

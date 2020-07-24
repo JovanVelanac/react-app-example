@@ -7,8 +7,7 @@ class Fish extends React.Component {
   };
 
   render() {
-    const { image, name, price, desc, status } = this.props.details;
-    const isAvailable = status === "available";
+    const { image, name, price, desc } = this.props.details;
 
     return (
       <li className="menu-fish">
@@ -17,10 +16,8 @@ class Fish extends React.Component {
           {name}
           <span className="price">{formatPrice(price)}</span>
         </h3>
-        <p>{desc}</p>
-        <button disabled={!isAvailable} onClick={this.handleClick}>
-          {isAvailable ? "Add To Order" : "Sold Out!"}
-        </button>
+        <button onClick={this.handleClick}>Add to Order</button>
+        <a href={desc}>{desc}</a>
       </li>
     );
   }
